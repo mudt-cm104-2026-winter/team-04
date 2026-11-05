@@ -29,7 +29,7 @@ No real names: this repository is public. -->
 
 | GitHub | Role |
 |Matyyy3|reviews|
-
+|geko-crypto|seat 1|
 ## How we work
 
 <!-- How your team uses Git. For example:
