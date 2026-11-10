@@ -28,8 +28,9 @@ The entries are kept in memory: after a restart the list is empty again.
 No real names: this repository is public. -->
 
 | GitHub | Role |
-|Matyyy3|reviews|
+|Matyyy3|seat 3|
 |geko-crypto|seat 1|
+|Daitaii-dev|seat 2|
 ## How we work
 
 <!-- How your team uses Git. For example:
