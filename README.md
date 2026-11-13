@@ -1,11 +1,12 @@
-# Team project
+# Fetch The Treat
 
 <!-- Replace the title with your project name. -->
 
-## What this is
+## This is a game where Max needs to answer loony's questions or face the consequence of not knowing. 
 
-<!-- One or two sentences: what does your app do, and who is it for?
-Right now it is the example "Things to bring". Replace it with your topic. -->
+This is a game that is like a quiz on git and git commands, The game is rather simple, it will ask you a question and
+give you options, if you pick the right option then Loony gets a treat, and if you pick the wrong one it will affect her
+mood.
 
 ## How to run it
 
