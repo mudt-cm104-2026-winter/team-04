@@ -1,14 +1,12 @@
-"""Things to bring: the starting point of your team project.
-
-This is an example. Replace the topic with your own: change the fields,
-the texts and the page. Grow it one pull request at a time.
+"""Fetch The Treat: a Git quiz game with Max and Loony.
 
 What happens where:
 - main.py      the web part: which address shows what (the "routes")
-- storage.py   where the entries are kept
+- storage.py   where the game state is kept
 - templates/   the HTML page
 - static/      the stylesheet
 """
+
 
 from pathlib import Path
 
@@ -21,22 +19,30 @@ from . import storage
 
 HERE = Path(__file__).parent
 
-app = FastAPI(title="Things to bring")
+app = FastAPI(title="Fetch The Treat")
 app.mount("/static", StaticFiles(directory=HERE / "static"), name="static")
 templates = Jinja2Templates(directory=HERE / "templates")
 
 
 @app.get("/")
 def show_list(request: Request):
-    """The start page: the form and all entries."""
+    """The start page: shows the current game state."""
     return templates.TemplateResponse(
-        request, "index.html", {"entries": storage.all_entries()}
+        request, "index.html",storage.get_state()
     )
 
 
-@app.post("/add")
-def add(thing: str = Form(...), person: str = Form(...)):
-    """The form on the start page sends its fields here."""
-    storage.add_entry(thing=thing.strip(), person=person.strip())
-    # Back to the start page. 303 tells the browser: load it with GET.
+@app.post("/help")
+def help_route():
+    storage.help_used()
+    return RedirectResponse("/", status_code=303)
+
+@app.post("/restart")
+def restart_route():
+    storage.restart()
+    return RedirectResponse("/", status_code=303)
+
+@app.post("/answer")
+def answer(choice: int = Form(...)):
+    storage.answer(choice)
     return RedirectResponse("/", status_code=303)

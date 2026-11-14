@@ -1,26 +1,26 @@
-"""Where the entries are kept.
+"""Where the game state is kept.
 
-For now: a Python list in memory. Simple, and it forgets everything when
-the app restarts. That is fine for this stage.
-
-The rest of the app only uses the functions below. Later in the semester
-this file can be replaced by one that keeps the entries somewhere else.
-As long as the function names stay the same, main.py does not change.
+For now: placeholder values, so the page can be built while the real game
+rules are still being written. The rest of the app only uses the functions
+below, so main.py does not change when the real logic replaces the placeholders.
 """
 
-_entries = []
-_next_id = 1
+def get_state():
+    return {
+        "question":"Which command shows what has changed right now?",
+        "options":["git status", "git clone", "git remote"],
+        "removed_option":None, "treats": 0, "wrong": 0, "streak": 0, "mood":0,
+        "mood_name":"happy", "helps_left": 2, "message": "", "game_over": False,
+        "ending":""
+    }
+
+def answer(choice):
+    pass
+
+def help_used():
+    pass
+
+def restart():
+    pass
 
 
-def all_entries():
-    """Return a copy of all entries, oldest first."""
-    return list(_entries)
-
-
-def add_entry(thing, person):
-    """Store a new entry and return it."""
-    global _next_id
-    entry = {"id": _next_id, "thing": thing, "person": person}
-    _entries.append(entry)
-    _next_id += 1
-    return entry
