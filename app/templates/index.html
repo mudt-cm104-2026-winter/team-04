@@ -22,37 +22,41 @@
     <p>Helps left: {{helps_left}}</p>
 
 
-    <ul>
-      {% for option in options %}
-      {% if loop.index0 == removed_option %}
-      <li>
-        <form action="/answer" method="post">
-          <button type="submit" name="choice" value="{{ loop.index0 }}" class="button" disabled>{{option}}</button>
-        </form>
-      </li>
-      {% else %}
-      <li>
-        <form action="/answer" method="post">
-          <button type="submit" name="choice" value="{{ loop.index0 }}" class="button">{{option}}</button>
-        </form>
-      </li>
-      {% endif %}
-      {% endfor %}
+    {% if game_over == False %}
+    {% for option in options %}
+    {% if loop.index0 == removed_option %}
+    <form action="/answer" method="post">
+      <button type="submit" name="choice" value="{{ loop.index0 }}" class="button" disabled>{{option}}</button>
+    </form><br>
+    {% else %}
+    <form action="/answer" method="post">
+      <button type="submit" name="choice" value="{{ loop.index0 }}" class="button">{{option}}</button>
+    </form><br>
+    {% endif %}
+    {% endfor %}
 
-      {% if helps_left == 0 %}
-      <li>
-        <form action="/help" method="post">
-          <button type="submit" class="button" disabled>Ask Loony for help</button>
-        </form>
-      </li>
-      {% else %}
-      <li>
-        <form action="/help" method="post">
-          <button type="submit" class="button">Ask Loony for help</button>
-        </form>
-      </li>
-      {% endif %}
-    </ul>
+    {% if helps_left == 0 %}
+    <form action="/help" method="post">
+      <button type="submit" class="button" disabled>Ask Loony for help</button>
+    </form>
+    {% else %}
+    <form action="/help" method="post">
+      <button type="submit" class="button">Ask Loony for help</button>
+    </form>
+    {% endif %}
+
+    {% else %}
+    {% if ending == 'eaten' %}
+    <p>Loony eats MAX</p>
+    {% elif ending == 'left' %}
+    <p>Loony leaves</p>
+    {% else %}
+    <p>You win</p>
+    {% endif %}
+    <form action="/restart" method="post">
+      <button type="submit" class="button">Play again</button>
+    </form>
+    {% endif %}
   </main>
 </body>
 
