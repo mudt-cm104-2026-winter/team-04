@@ -122,6 +122,7 @@ button:disabled {
   color: var(--muted);
 }
 
+/* ---------- scene ---------- */
 .scene {
   height: 18rem;
   padding-bottom: 2.5rem;
@@ -131,4 +132,297 @@ button:disabled {
   justify-content: space-around;
   align-items: flex-end;
   overflow: hidden;
+}
+
+/* ---------- Max ---------- */
+.max {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bob 2s ease-in-out infinite;
+}
+
+.max-head {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  background: #f1c27d;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.max-head::before {
+  content: "";
+  position: absolute;
+  top: -.25rem;
+  left: -.1rem;
+  width: 3.2rem;
+  height: 1.5rem;
+  background: #b8b8b8;
+  border-radius: 1.6rem 1.6rem .4rem .4rem;
+}
+
+.max-eye {
+  position: absolute;
+  top: 1.35rem;
+  left: .85rem;
+  width: .35rem;
+  height: .35rem;
+  background: #222;
+  border-radius: 50%;
+}
+
+.max-eye+.max-eye {
+  left: 1.8rem;
+}
+
+.max-smile {
+  position: absolute;
+  top: 1.9rem;
+  left: 1rem;
+  width: 1rem;
+  height: .5rem;
+  border-bottom: .18rem solid #8a3b2a;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.max-body {
+  width: 4rem;
+  height: 4.5rem;
+  margin-top: -.2rem;
+  background: #f7f7f7;
+  border-radius: 1rem 1rem .3rem .3rem;
+  box-shadow: inset 0 0 0 2px #d8d8d8;
+}
+
+.max-legs {
+  display: flex;
+  gap: .3rem;
+}
+
+.max-legs span {
+  width: 1.5rem;
+  height: 3.2rem;
+  background: #1d1d22;
+  border-radius: 0 0 .3rem .3rem;
+}
+
+/* ---------- Loony (faces left, towards Max) ---------- */
+.loony {
+  --dog: #8b4a1f;
+  --dog-dark: #5e2f10;
+  position: relative;
+  width: 9.5rem;
+  height: 5.5rem;
+}
+
+.loony-body {
+  position: absolute;
+  left: 0;
+  bottom: 3rem;
+  width: 7rem;
+  height: 2.6rem;
+  background: var(--dog);
+  border-radius: 1.3rem;
+  left: 2rem;
+}
+
+.loony-head {
+  position: absolute;
+  left: 0;
+  bottom: 3.5rem;
+  width: 3rem;
+  height: 2.8rem;
+  background: var(--dog);
+  border-radius: 50% 50% 45% 45%;
+}
+
+.loony-head::before {
+  content: "";
+  position: absolute;
+  top: .55rem;
+  left: .6rem;
+  width: .8rem;
+  height: .15rem;
+  background: #2b1204;
+  border-radius: 2px;
+  opacity: 0;
+}
+
+.loony-eye {
+  position: absolute;
+  top: .9rem;
+  left: .7rem;
+  width: .4rem;
+  height: .4rem;
+  background: #111;
+  border-radius: 50%;
+}
+
+.loony-nose {
+  position: absolute;
+  bottom: .6rem;
+  left: -.3rem;
+  width: 1rem;
+  height: .8rem;
+  background: #222;
+  border-radius: 50%;
+}
+
+.loony-ear {
+  position: absolute;
+  top: .2rem;
+  right: .5rem;
+  width: 1rem;
+  height: 1.8rem;
+  background: var(--dog-dark);
+  border-radius: 50%;
+  transform-origin: top center;
+  transform: rotate(10deg);
+}
+
+.loony-tail {
+  position: absolute;
+  right: .4rem;
+  bottom: 4.4rem;
+  width: .5rem;
+  height: 3rem;
+  background: var(--dog);
+  border-radius: .4rem;
+  transform-origin: bottom center;
+  animation: wag .5s ease-in-out infinite alternate;
+}
+
+.loony-leg {
+  position: absolute;
+  bottom: 0;
+  width: .7rem;
+  height: 3.4rem;
+  background: var(--dog-dark);
+  border-radius: .3rem;
+}
+
+.loony-leg-front {
+  left: 2.6rem;
+}
+
+.loony-leg-back {
+  left: 7.4rem;
+}
+
+/* ---------- Loony's mood ---------- */
+/* 0 happy: fast tail wag (the default above) */
+
+/* 1 a little sad: slow wag, sad brows, ear droops */
+.mood-1 .loony-tail {
+  animation-duration: 1.4s;
+}
+
+.mood-1 .loony-head::before {
+  opacity: 1;
+  transform: rotate(-20deg);
+}
+
+.mood-1 .loony-ear {
+  transform: rotate(25deg);
+}
+
+/* 2 so sad: tail hangs down, ear drops fully */
+.mood-2 .loony-tail {
+  animation: none;
+  transform: rotate(150deg);
+}
+
+.mood-2 .loony-head::before {
+  opacity: 1;
+  transform: rotate(-25deg);
+}
+
+.mood-2 .loony-ear {
+  transform: rotate(40deg);
+}
+
+.mood-2 .loony-head {
+  transform: translateY(.3rem);
+}
+
+/* 3 grumpy: stiff tail, angry brows, darker fur */
+.mood-3 .loony {
+  --dog: #7a3a14;
+  --dog-dark: #4a230c;
+}
+
+.mood-3 .loony-tail {
+  animation: none;
+  transform: rotate(-8deg);
+}
+
+.mood-3 .loony-head::before {
+  opacity: 1;
+  transform: rotate(20deg);
+}
+
+/* 4 furious: red fur, shaking */
+.mood-4 .loony {
+  --dog: #b3341d;
+  --dog-dark: #6e1d10;
+  animation: shake .08s linear infinite alternate;
+}
+
+.mood-4 .loony-tail {
+  animation: none;
+  transform: rotate(-8deg);
+}
+
+.mood-4 .loony-head::before {
+  opacity: 1;
+  transform: rotate(-25deg);
+  height: .22rem;
+}
+
+/* Max gets nervous when Loony is cross */
+.mood-3 .max-smile,
+.mood-4 .max-smile {
+  top: 2.1rem;
+  transform: rotate(180deg);
+}
+
+.mood-4 .max {
+  animation-duration: .4s;
+}
+
+/* ---------- animations ---------- */
+@keyframes bob {
+  50% {
+    transform: translateY(-.3rem);
+  }
+}
+
+@keyframes wag {
+  from {
+    transform: rotate(15deg);
+  }
+
+  to {
+    transform: rotate(55deg);
+  }
+}
+
+@keyframes shake {
+  from {
+    transform: translateX(-3px);
+  }
+
+  to {
+    transform: translateX(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .max,
+  .loony,
+  .loony-tail {
+    animation: none;
+  }
 }

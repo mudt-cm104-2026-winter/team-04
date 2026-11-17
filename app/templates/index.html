@@ -15,7 +15,6 @@
     <h1>Fetch The Treat</h1>
     <p class="intro">You are Max and you need to answer questions in order to feed Loony</p>
 
-
     <div class="stats">
       <span>Treats: {{ treats }}</span>
       <span>Wrong: {{ wrong }}</span>
@@ -23,14 +22,31 @@
       <span class="mood-{{ mood }}">Loony: {{ mood_name }}</span>
     </div>
 
+    <div class="scene mood-{{ mood }}" aria-hidden="true">
+      <div class="max">
+        <div class="max-head">
+          <span class="max-eye"></span>
+          <span class="max-eye"></span>
+          <div class="max-smile"></div>
+        </div>
+        <div class="max-body"></div>
+        <div class="max-legs"><span></span><span></span></div>
+      </div>
 
-    <div class="scene mood-{{ mood }}">
-      <span class="max">🧑‍🏫</span>
-      <span class="loony">🐕</span>
+      <div class="loony">
+        <div class="loony-tail"></div>
+        <span class="loony-leg loony-leg-back"></span>
+        <span class="loony-leg loony-leg-front"></span>
+        <div class="loony-body"></div>
+        <div class="loony-head">
+          <span class="loony-ear"></span>
+          <span class="loony-eye"></span>
+          <span class="loony-nose"></span>
+        </div>
+      </div>
     </div>
 
     <p class="question">{{ question }}</p>
-
 
     {% if game_over == False %}
     <div class="help">
@@ -46,7 +62,6 @@
       <p class="helps-left">Helps left: {{ helps_left }}</p>
     </div>
 
-
     <div class="answers">
       {% for option in options %}
       {% if loop.index0 == removed_option %}
@@ -61,7 +76,6 @@
       {% endfor %}
     </div>
 
-
     {% else %}
     {% if ending == 'eaten' %}
     <p>Loony eats Max</p>
@@ -74,7 +88,6 @@
       <button type="submit">Play again</button>
     </form>
     {% endif %}
-
 
     <p class="feedback">Feedback: {{ message }}</p>
   </main>
