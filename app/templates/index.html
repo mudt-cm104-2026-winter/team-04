@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,56 +9,89 @@
   <link rel="stylesheet" href="/static/style.css">
 </head>
 
+
 <body>
   <main>
     <h1>Fetch The Treat</h1>
     <p class="intro">You are Max and you need to answer questions in order to feed Loony</p>
 
-    <p>{{ question }}</p>
-    <p>Treats: {{treats}}</p>
-    <p>Wrong: {{wrong}}</p>
-    <p>Streak: {{streak}}</p>
-    <p>Feedback: {{message}}</p>
-    <p class="mood-{{ mood }}">{{mood_name}}</p>
-    <p>Helps left: {{helps_left}}</p>
+    <div class="stats">
+      <span>Treats: {{ treats }}</span>
+      <span>Wrong: {{ wrong }}</span>
+      <span>Streak: {{ streak }}</span>
+      <span class="mood-{{ mood }}">Loony: {{ mood_name }}</span>
+    </div>
 
+    <div class="scene mood-{{ mood }}" aria-hidden="true">
+      <div class="max">
+        <div class="max-head">
+          <span class="max-eye"></span>
+          <span class="max-eye"></span>
+          <div class="max-smile"></div>
+        </div>
+        <div class="max-body"></div>
+        <div class="max-legs"><span></span><span></span></div>
+      </div>
+
+      <div class="loony">
+        <div class="loony-tail"></div>
+        <span class="loony-leg loony-leg-back"></span>
+        <span class="loony-leg loony-leg-front"></span>
+        <div class="loony-body"></div>
+        <div class="loony-head">
+          <span class="loony-ear"></span>
+          <span class="loony-eye"></span>
+          <span class="loony-nose"></span>
+        </div>
+      </div>
+    </div>
+
+    <p class="question">{{ question }}</p>
 
     {% if game_over == False %}
-    {% for option in options %}
-    {% if loop.index0 == removed_option %}
-    <form action="/answer" method="post">
-      <button type="submit" name="choice" value="{{ loop.index0 }}" class="button" disabled>{{option}}</button>
-    </form><br>
-    {% else %}
-    <form action="/answer" method="post">
-      <button type="submit" name="choice" value="{{ loop.index0 }}" class="button">{{option}}</button>
-    </form><br>
-    {% endif %}
-    {% endfor %}
+    <div class="help">
+      {% if helps_left == 0 %}
+      <form action="/help" method="post">
+        <button type="submit" disabled>Ask Loony for help</button>
+      </form>
+      {% else %}
+      <form action="/help" method="post">
+        <button type="submit">Ask Loony for help</button>
+      </form>
+      {% endif %}
+      <p class="helps-left">Helps left: {{ helps_left }}</p>
+    </div>
 
-    {% if helps_left == 0 %}
-    <form action="/help" method="post">
-      <button type="submit" class="button" disabled>Ask Loony for help</button>
-    </form>
-    {% else %}
-    <form action="/help" method="post">
-      <button type="submit" class="button">Ask Loony for help</button>
-    </form>
-    {% endif %}
+    <div class="answers">
+      {% for option in options %}
+      {% if loop.index0 == removed_option %}
+      <form action="/answer" method="post">
+        <button type="submit" name="choice" value="{{ loop.index0 }}" disabled>{{ option }}</button>
+      </form>
+      {% else %}
+      <form action="/answer" method="post">
+        <button type="submit" name="choice" value="{{ loop.index0 }}">{{ option }}</button>
+      </form>
+      {% endif %}
+      {% endfor %}
+    </div>
 
     {% else %}
     {% if ending == 'eaten' %}
-    <p>Loony eats MAX</p>
+    <p>Loony eats Max</p>
     {% elif ending == 'left' %}
     <p>Loony leaves</p>
     {% else %}
     <p>You win</p>
     {% endif %}
     <form action="/restart" method="post">
-      <button type="submit" class="button">Play again</button>
+      <button type="submit">Play again</button>
     </form>
     {% endif %}
+
+    <p class="feedback">Feedback: {{ message }}</p>
   </main>
 </body>
+
 
 </html>
