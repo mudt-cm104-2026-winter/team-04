@@ -1,6 +1,6 @@
 :root {
-  --bg: #fbfbfa;
-  --fg: #1c1c1a;
+  --bg: #110b30;
+  --fg: #b3b3b3;
   --muted: #7a7a72;
   --line: #e2e1dc;
   --accent: #2f6f4f;
@@ -21,6 +21,7 @@ body {
 main {
   max-width: 36rem;
   margin: 0 auto;
+  text-align: center;
 }
 
 h1 {
@@ -28,56 +29,106 @@ h1 {
   margin: 0 0 .25rem;
 }
 
-.intro,
-.empty {
+.intro {
   color: var(--muted);
 }
 
-form.add {
-  display: flex;
-  gap: .5rem;
-  margin: 1.5rem 0 2rem;
-}
-
-form.add input {
-  flex: 1;
-  min-width: 0;
-  padding: .6rem .8rem;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: #fff;
-  font: inherit;
-}
-
+/* all buttons: shared look */
 button {
-  padding: .6rem 1rem;
+  padding: .6rem 1.5rem;
   border: 0;
-  border-radius: 6px;
-  background: var(--accent);
+  border-radius: 999px;
+  background: radial-gradient(rgb(198, 123, 3), rgb(152, 99, 1));
   color: #fff;
   font: inherit;
   cursor: pointer;
+  transition: transform .15s;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  padding: .5rem;
-  border-bottom: 1px solid var(--line);
-  text-align: left;
-}
-
-th {
-  color: var(--muted);
-  font-weight: 600;
+button:hover:not(:disabled) {
+  transform: scale(1.05);
 }
 
 button:disabled {
   background: var(--line);
   color: var(--muted);
   cursor: not-allowed;
+}
+
+/* stats bubbles */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.stats span {
+  padding: .4rem 1rem;
+  border-radius: 999px;
+  background: #3f2ba3;
+}
+
+
+/* question */
+.question {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 12px;
+  background: radial-gradient(rgb(0, 166, 255), rgb(31, 10, 149));
+  color: #fff;
+}
+
+/* help */
+.help {
+  margin: 1rem 0;
+}
+
+.helps-left {
+  margin: .5rem 0 0;
+  color: var(--muted);
+}
+
+/* answers: same width, centered */
+.answers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .75rem;
+  margin: 1rem 0;
+}
+
+.answers form {
+  width: 100%;
+  max-width: 24rem;
+}
+
+.answers button {
+  width: 100%;
+  padding: .8rem 2rem;
+  background: linear-gradient(#e0a458, #b9772b);
+  color: #3b2200;
+  border: #7a4a12;
+}
+
+.answers button:disabled {
+  background: rgb(172, 151, 111);
+  color: var(--muted);
+  border-color: var(--muted);
+}
+
+.feedback {
+  color: var(--muted);
+}
+
+.scene {
+  height: 18rem;
+  padding-bottom: 2.5rem;
+  background: linear-gradient(#d6d9e0 0 72%, #55606f 72% 100%);
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  overflow: hidden;
 }
