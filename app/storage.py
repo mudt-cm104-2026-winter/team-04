@@ -5,22 +5,81 @@ rules are still being written. The rest of the app only uses the functions
 below, so main.py does not change when the real logic replaces the placeholders.
 """
 
+import random
+
+from . import questions
+
+WIN_TREATS = 8
+MAX_WRONG = 5
+MAX_STREAK = 5
+START_HELPS = 2
+MOOD_NAMES = ["happy", "a little sad", "so sad", "grumpy", "furious"]
+
+_order = []
+_position = 0
+_options = []
+_correct = 0
+_treats = 0
+_wrong = 0
+_streak = 0
+_helps_left = 0
+_removed_option = None
+_message = ""
+_game_over = False
+_ending = ""
+
+
+
 def get_state():
+    mood = min(_wrong, 4)
     return {
-        "question":"Which command shows what has changed right now?",
-        "options":["git status", "git clone", "git remote"],
-        "removed_option":None, "treats": 0, "wrong": 0, "streak": 0, "mood":0,
-        "mood_name":"happy", "helps_left": 2, "message": "", "game_over": False,
-        "ending":""
+        "question": _order[_position]["question"],
+        "options": list(_options),
+        "removed_option": _removed_option,
+        "treats": _treats,
+        "wrong": _wrong,
+        "streak": _streak,
+        "mood": mood,
+        "mood_name": MOOD_NAMES[mood],
+        "helps_left": _helps_left,
+        "message": _message,
+        "game_over": _game_over,
+        "ending": _ending,
     }
+
 
 def answer(choice):
     pass
 
+
 def help_used():
     pass
 
+
+def _load_question():
+    global _options, _correct, _removed_option
+    q = _order[_position]
+    right_text = q["options"][q["answer"]]
+    _options = list(q["options"])
+    random.shuffle(_options)
+    _correct = _options.index(right_text)
+    _removed_option = None
+
+
 def restart():
-    pass
+    # THIS FUNCTION IS RESTARTING ALL IRREGULATR VARIABLES
+    global _treats, _wrong, _streak, _helps_left, _removed_option, _message, _game_over, _ending, _order, _position
+
+    _treats = _wrong = _streak = 0
+    _helps_left = START_HELPS
+    _removed_option = None
+    _message = ""
+    _game_over = False
+    _ending = ""
+    _order = list(questions.QUESTIONS)
+    random.shuffle(_order)
+    _position = 0
+    _load_question()
 
 
+restart()
