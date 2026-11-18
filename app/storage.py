@@ -32,6 +32,10 @@ _ending = ""
 
 def get_state():
     mood = min(_wrong, 4)
+    if _ending=="win":
+        mood=0
+    elif _ending=="left" or _ending=="eaten":
+        mood=4
     return {
         "question": _order[_position]["question"],
         "options": list(_options),
