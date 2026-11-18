@@ -83,8 +83,16 @@ def answer(choice):
         _load_question()
 
 def help_used():
-    pass
-
+    global _helps_left, _removed_option
+    if _game_over:
+        return 
+    if _helps_left<=0:
+        return 
+    if _removed_option is not None:
+        return 
+    wrong_options=[i for i in range(3) if i != _correct]
+    _removed_option=random.choice(wrong_options)
+    _helps_left-=1
 
 def _load_question():
     #THIS FUNCTION IS LOADING AND SHUFFLING THE QUESTIONS

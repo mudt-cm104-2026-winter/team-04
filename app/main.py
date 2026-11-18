@@ -35,7 +35,7 @@ def show_list(request: Request):
 @app.post("/help")
 def help_route():
     storage.help_used()
-    return RedirectResponse("/", status_code=303)
+    return RedirectResponse("/#bottom", status_code=303)
 
 @app.post("/restart")
 def restart_route():
