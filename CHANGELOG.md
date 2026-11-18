@@ -6,6 +6,7 @@
 - Max and Loony are now drawn with CSS, and Loony's look and animation change with his mood (#38)
 - The page is restyled with a centered layout, stat bubbles and treat-style answer buttons (#29)
 - The game-over scene now plays an animation for each ending: win, left and eaten (#41)
+- Add game state, restart and real get_state() in storage.py(#39)
 <!-- Every pull request adds one line at the top of "Unreleased":
 - what changed, in one sentence (#<pull request number>)
 Example:
