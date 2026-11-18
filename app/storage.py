@@ -49,8 +49,38 @@ def get_state():
 
 
 def answer(choice):
-    pass
+    global _treats, _wrong, _streak, _message, _game_over, _ending, _position
+    
+    if _game_over:
+        return
+    if choice not in (0, 1, 2):
+        return 
+    if choice==_removed_option:
+        return 
+    is_right =(choice==_correct)
 
+    if is_right:
+        _treats+=1
+        _streak=0
+        _message=random.choice(questions.RIGHT_MESSAGES)
+    else:
+        _wrong+=1
+        _streak+=1
+        _message=questions.WRONG_MESSAGES[min(_wrong, len(questions.WRONG_MESSAGES)) - 1]
+   
+    if _streak>=MAX_STREAK:
+        _game_over=True
+        _ending="eaten"
+    elif _wrong>=MAX_WRONG:
+            _game_over=True
+            _ending="left"
+    if _treats==WIN_TREATS:
+        _game_over=True
+        _ending="win"
+
+    if _game_over==False:
+        _position+=1
+        _load_question()
 
 def help_used():
     pass
