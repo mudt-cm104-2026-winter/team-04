@@ -581,7 +581,55 @@ button:disabled {
   #max,
   #tail,
   #dog,
-  .leg {
-    animation: none !important
+  .leg,
+  #tummy,
+  #bigMouth,
+  .tb,
+  #treat {
+    animation: none !important;
+  }
+
+  /* animations are off: show the final picture of each ending */
+  .ending-left #dog {
+    transform: translateX(340px) scaleX(-1);
+  }
+
+  .ending-eaten #dog {
+    transform: translateX(-320px);
+  }
+
+  .ending-eaten #max {
+    opacity: 0;
+  }
+
+  .ending-eaten #tummy {
+    opacity: 1;
+    transform: scaleY(1.4);
+  }
+}
+
+/* ---------- treat: flies from Max to Loony after a right answer ---------- */
+#treat {
+  opacity: 0;
+}
+
+.treat-fly #treat {
+  animation: treat 1s ease-out;
+}
+
+@keyframes treat {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translate(222px, 4px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(238px, 16px);
   }
 }

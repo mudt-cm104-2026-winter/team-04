@@ -22,7 +22,8 @@
       <span class="mood-{{ mood }}">Loony: {{ mood_name }}</span>
     </div>
 
-    <div class="scene mood-{{ mood }} {% if game_over %}ending-{{ ending }}{% endif %}">
+    <div
+      class="scene mood-{{ mood }} {% if game_over %}ending-{{ ending }}{% endif %}{% if streak == 0 and treats > 0 %} treat-fly{% endif %}">
       <svg viewBox="0 0 800 340" role="img" aria-label="Max the professor and his dog Loony">
         <!-- ================= OFFICE BACKGROUND (cartoon version of the photo) ================= -->
         <defs>
@@ -318,6 +319,17 @@
             <stop offset="1" stop-color="#3b1d0c" />
           </linearGradient>
         </defs>
+        <!-- treat: flies from Max to Loony after a right answer -->
+        <g id="treat">
+          <g transform="translate(250,150)">
+            <rect x="0" y="0" width="30" height="12" rx="6" fill="#d9a15a" />
+            <circle cx="2" cy="-2" r="6" fill="#d9a15a" />
+            <circle cx="2" cy="14" r="6" fill="#d9a15a" />
+            <circle cx="28" cy="-2" r="6" fill="#d9a15a" />
+            <circle cx="28" cy="14" r="6" fill="#d9a15a" />
+          </g>
+        </g>
+
         <!-- ================= DOG (flat-vector, long-legged dachshund style) ================= -->
         <g id="dog">
           <g id="dogFlip">
