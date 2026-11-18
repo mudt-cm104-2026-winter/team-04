@@ -22,7 +22,7 @@
       <span class="mood-{{ mood }}">Loony: {{ mood_name }}</span>
     </div>
 
-    <div class="scene mood-{{ mood }}" aria-hidden="true">
+    <div class="scene mood-{{ mood }} {% if game_over %}ending-{{ ending }}{% endif %}" aria-hidden="true">
       <div class="max">
         <div class="max-head">
           <span class="max-eye"></span>
@@ -36,7 +36,9 @@
       <div class="loony">
         <div class="loony-tail"></div>
         <span class="loony-leg loony-leg-back"></span>
+        <span class="loony-leg loony-leg-back2"></span>
         <span class="loony-leg loony-leg-front"></span>
+        <span class="loony-leg loony-leg-front2"></span>
         <div class="loony-body"></div>
         <div class="loony-head">
           <span class="loony-ear"></span>
@@ -74,22 +76,23 @@
       </form>
       {% endif %}
       {% endfor %}
+      <p class="feedback">Feedback: {{ message }}</p>
     </div>
 
     {% else %}
     {% if ending == 'eaten' %}
-    <p>Loony eats Max</p>
+    <p>Loony eats Max, you answerd wrong 5 in a row</p>
     {% elif ending == 'left' %}
-    <p>Loony leaves</p>
+    <p>Loony leaves, you answered 5 wrong</p>
     {% else %}
-    <p>You win</p>
+    <p>You did it!</p>
     {% endif %}
     <form action="/restart" method="post">
       <button type="submit">Play again</button>
     </form>
     {% endif %}
 
-    <p class="feedback">Feedback: {{ message }}</p>
+
   </main>
 </body>
 
