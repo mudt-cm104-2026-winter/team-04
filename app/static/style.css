@@ -122,530 +122,400 @@ button:disabled {
   color: var(--muted);
 }
 
-/* ---------- scene ---------- */
+/* ---------- scene (office, Max and Loony) ---------- */
 .scene {
-  height: 18rem;
-  padding-bottom: 2.5rem;
-  background: linear-gradient(#d6d9e0 0 72%, #55606f 72% 100%);
+  background: #eeebe4;
   border-radius: 12px;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-  overflow: hidden;
-}
-
-/* ---------- Max ---------- */
-.max {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: bob 2s ease-in-out infinite;
-}
-
-.max-head {
   position: relative;
-  width: 3rem;
-  height: 3rem;
-  background: #f1c27d;
-  border-radius: 50%;
-  z-index: 1;
+  overflow: hidden
 }
 
-.max-head::before {
-  content: "";
-  position: absolute;
-  top: -.25rem;
-  left: -.1rem;
-  width: 3.2rem;
-  height: 1.5rem;
-  background: #b8b8b8;
-  border-radius: 1.6rem 1.6rem .4rem .4rem;
+.scene svg {
+  width: 100%;
+  height: auto;
+  display: block
 }
 
-.max-eye {
-  position: absolute;
-  top: 1.35rem;
-  left: .85rem;
-  width: .35rem;
-  height: .35rem;
-  background: #222;
-  border-radius: 50%;
+/* ---------- Max: bobs up and down ---------- */
+#max {
+  animation: bob 2s ease-in-out infinite
 }
 
-.max-eye+.max-eye {
-  left: 1.8rem;
+/* ---------- Loony: tail wag (fast = happy) ---------- */
+#tail {
+  transform-origin: 0 0;
+  animation: wag .5s ease-in-out infinite alternate
 }
 
-.max-smile {
-  position: absolute;
-  top: 1.9rem;
-  left: 1rem;
-  width: 1rem;
-  height: .5rem;
-  border-bottom: .18rem solid #8a3b2a;
-  border-radius: 0 0 1rem 1rem;
+#dog {
+  transform-origin: 600px 220px
 }
 
-.max-body {
-  width: 4rem;
-  height: 4.5rem;
-  margin-top: -.2rem;
-  background: #f7f7f7;
-  border-radius: 1rem 1rem .3rem .3rem;
-  box-shadow: inset 0 0 0 2px #d8d8d8;
+.leg-ff {
+  transform-origin: -63px -19px
 }
 
-.max-legs {
-  display: flex;
-  gap: .3rem;
+.leg-fb {
+  transform-origin: 48px -25px
 }
 
-.max-legs span {
-  width: 1.5rem;
-  height: 3.2rem;
-  background: #1d1d22;
-  border-radius: 0 0 .3rem .3rem;
+.leg-nb {
+  transform-origin: 63px -27px
 }
 
-/* ---------- Loony (faces left, towards Max) ---------- */
-.loony {
-  --dog: #8b4a1f;
-  --dog-dark: #5e2f10;
-  position: relative;
-  width: 9.5rem;
-  height: 5.5rem;
+.leg-nf {
+  transform-origin: -41px -21px
 }
 
-.loony-body {
-  position: absolute;
-  left: 0;
-  bottom: 3rem;
-  width: 7rem;
-  height: 2.6rem;
-  background: var(--dog);
-  border-radius: 1.3rem;
-  left: 2rem;
-}
-
-.loony-head {
-  position: absolute;
-  left: 0;
-  bottom: 3.5rem;
-  width: 3rem;
-  height: 2.8rem;
-  background: var(--dog);
-  border-radius: 50% 50% 45% 45%;
-}
-
-.loony-head::before {
-  content: "";
-  position: absolute;
-  top: .55rem;
-  left: .6rem;
-  width: .8rem;
-  height: .15rem;
-  background: #2b1204;
-  border-radius: 2px;
+#tummy {
+  visibility: visible;
   opacity: 0;
+  transform-origin: 4px -38px
 }
 
-.loony-eye {
-  position: absolute;
-  top: .9rem;
-  left: .7rem;
-  width: .4rem;
-  height: .4rem;
-  background: #111;
-  border-radius: 50%;
+#thought {
+  visibility: hidden
 }
 
-.loony-nose {
-  position: absolute;
-  bottom: .6rem;
-  left: -.3rem;
-  width: 1rem;
-  height: .8rem;
-  background: #222;
-  border-radius: 50%;
-}
-
-.loony-ear {
-  position: absolute;
-  top: .2rem;
-  right: 0.5rem;
-  width: 1rem;
-  height: 1.8rem;
-  background: var(--dog-dark);
-  border-radius: 50%;
-  transform-origin: top center;
-  transform: rotate(-10deg);
-}
-
-.loony-tail {
-  position: absolute;
-  right: .4rem;
-  bottom: 4.4rem;
-  width: .5rem;
-  height: 3rem;
-  background: var(--dog);
-  border-radius: .4rem;
-  transform-origin: bottom center;
-  animation: wag .5s ease-in-out infinite alternate;
-}
-
-.loony-leg {
-  position: absolute;
-  bottom: 0;
-  width: .7rem;
-  height: 3.4rem;
-  background: var(--dog-dark);
-  border-radius: .3rem;
-}
-
-.loony-leg-front {
-  left: 2.6rem;
-}
-
-.loony-leg-back {
-  left: 7.4rem;
-}
-
-.loony-leg-front2 {
-  left: 3.5rem;
-  filter: brightness(.85);
-}
-
-.loony-leg-back2 {
-  left: 6.3rem;
-  filter: brightness(.85);
+.tb {
+  transform-box: fill-box;
+  transform-origin: center
 }
 
 /* ---------- Loony's mood ---------- */
 /* 0 happy: fast tail wag (the default above) */
 
-/* 1 a little sad: slow wag, sad brows, ear droops */
-.mood-1 .loony-tail {
-  animation-duration: 1.4s;
+/* 1 a little sad: slow wag, sad brow, ear droops */
+.mood-1 #tail {
+  animation-duration: 1.4s
 }
 
-.mood-1 .loony-head::before {
+.mood-1 #browL {
   opacity: 1;
-  transform: rotate(-20deg);
+  d: path("M-14 -19 L-2 -15")
 }
 
-.mood-1 .loony-ear {
-  transform: rotate(25deg);
+.mood-1 #earL {
+  transform: translate(8px, -14px) rotate(-30deg)
 }
 
-/* 2 so sad: tail hangs down, ear drops fully */
-.mood-2 .loony-tail {
-  animation: none;
-  transform: rotate(150deg);
+/* 2 so sad: tail hangs down, ear drops fully, head lowers */
+.mood-2 #tail {
+  animation: none
 }
 
-.mood-2 .loony-head::before {
+.mood-2 #tailRot {
+  transform: rotate(100deg)
+}
+
+.mood-2 #browL {
   opacity: 1;
-  transform: rotate(-25deg);
+  d: path("M-14 -21 L-2 -14")
 }
 
-.mood-2 .loony-ear {
-  transform: rotate(40deg);
+.mood-2 #earL {
+  transform: translate(8px, -14px) rotate(-50deg)
 }
 
-.mood-2 .loony-head {
-  transform: translateY(.3rem);
+.mood-2 #dogHead {
+  transform: translate(-100px, -75px)
 }
 
-/* 3 grumpy: stiff tail, angry brows, darker fur */
-.mood-3 .loony {
-  --dog: #7a3a14;
-  --dog-dark: #4a230c;
+/* 3 grumpy: stiff tail, angry brow, shaking with rage (a little less than furious) */
+.mood-3 #tail {
+  animation: none
 }
 
-.mood-3 .loony-tail {
-  animation: none;
-  transform: rotate(-8deg);
+.mood-3 #tailRot {
+  transform: rotate(-8deg)
 }
 
-.mood-3 .loony-head::before {
+.mood-3 #browL {
   opacity: 1;
-  transform: rotate(20deg);
+  d: path("M-14 -12 L-2 -18")
+}
+
+.mood-3 #earL {
+  transform: translate(8px, -14px) rotate(-16deg)
+}
+
+.mood-3 #dog {
+  animation: grumble .12s linear infinite alternate
 }
 
 /* 4 furious: red fur, shaking */
-.mood-4 .loony {
-  --dog: #b3341d;
-  --dog-dark: #6e1d10;
-  animation: shake .08s linear infinite alternate;
+.mood-4 #dog {
+  animation: shake .08s linear infinite alternate
 }
 
-.mood-4 .loony-tail {
-  animation: none;
-  transform: rotate(-8deg);
+.mood-4 #tail {
+  animation: none
 }
 
-.mood-4 .loony-head::before {
+.mood-4 #tailRot {
+  transform: rotate(-8deg)
+}
+
+.mood-4 #browL {
   opacity: 1;
-  transform: rotate(-25deg);
-  height: .22rem;
+  d: path("M-15 -10 L-1 -20")
+}
+
+.mood-4 #earL {
+  transform: translate(8px, -14px) rotate(-24deg)
+}
+
+.mood-4 #bodyG stop:nth-child(1) {
+  stop-color: #b3341d
+}
+
+.mood-4 #bodyG stop:nth-child(2) {
+  stop-color: #962b18
+}
+
+.mood-4 #legG stop:nth-child(1) {
+  stop-color: #8e2a17
+}
+
+.mood-4 #legG stop:nth-child(2) {
+  stop-color: #6e1d10
+}
+
+.mood-4 #earG2 stop:nth-child(1) {
+  stop-color: #7a1f10
+}
+
+.mood-4 #earG2 stop:nth-child(2) {
+  stop-color: #5c160b
 }
 
 /* Max gets nervous when Loony is cross */
-.mood-3 .max-smile,
-.mood-4 .max-smile {
-  top: 2.1rem;
-  transform: rotate(180deg);
+.mood-3 #maxSmile,
+.mood-4 #maxSmile {
+  d: path("M-12 97 Q0 89 12 97")
 }
 
-.mood-4 .max {
-  animation-duration: .4s;
+.mood-4 #max {
+  animation-duration: .4s
 }
 
-/* ---------- animations ---------- */
-@keyframes bob {
-  50% {
-    transform: translateY(-.3rem);
-  }
+/* ---------- ending: win (both hop, tail wags fast) ---------- */
+.ending-win #dog,
+.ending-win #max {
+  animation: hop .6s ease-in-out infinite alternate
 }
+
+.ending-win #max {
+  animation-delay: .15s
+}
+
+.ending-win #tail {
+  animation: wag .2s ease-in-out infinite alternate
+}
+
+/* ---------- ending: left (Max is sad and still; Loony turns and walks off) ---------- */
+.ending-left #max {
+  animation: none
+}
+
+.ending-left #maxSmile {
+  d: path("M-12 97 Q0 89 12 97")
+}
+
+.ending-left #dog {
+  animation: leave 5s ease-in-out forwards
+}
+
+.ending-left #tail {
+  animation: none
+}
+
+.ending-left #tailRot {
+  transform: rotate(100deg)
+}
+
+.ending-left #browL {
+  opacity: 1;
+  d: path("M-14 -21 L-2 -14")
+}
+
+.ending-left #earL {
+  transform: translate(8px, -14px) rotate(-50deg)
+}
+
+.ending-left #dogHead {
+  transform: translate(-100px, -75px)
+}
+
+.ending-left .leg {
+  animation: step .4s ease-in-out 1.4s infinite alternate
+}
+
+.ending-left .leg-nb,
+.ending-left .leg-ff {
+  animation-direction: alternate-reverse
+}
+
+/* ---------- ending: eaten (cartoon, no gore) ---------- */
+.ending-eaten #dog {
+  animation: lunge 3.5s ease-in forwards
+}
+
+.ending-eaten #tail {
+  animation: none
+}
+
+.ending-eaten #tailRot {
+  transform: rotate(-8deg)
+}
+
+.ending-eaten #bigMouth {
+  visibility: visible;
+  opacity: 0;
+  animation: chomp 3.5s forwards
+}
+
+.ending-eaten #tummy {
+  animation: belly 3.5s forwards
+}
+
+.ending-eaten #thought {
+  visibility: visible
+}
+
+.ending-eaten .tb1 {
+  animation: pop .3s 2.6s both
+}
+
+.ending-eaten .tb2 {
+  animation: pop .3s 2.9s both
+}
+
+.ending-eaten .tb3 {
+  animation: pop .35s 3.2s both
+}
+
+.ending-eaten #max {
+  transform-origin: 244px 190px;
+  animation: swallowed 3.5s forwards
+}
+
+.ending-eaten #maxSmile {
+  d: path("M-12 97 Q0 89 12 97")
+}
+
+/* ---------- keyframes ---------- */
+
 
 @keyframes wag {
   from {
-    transform: rotate(15deg);
+    transform: rotate(-10deg)
   }
 
   to {
-    transform: rotate(55deg);
+    transform: rotate(30deg)
+  }
+}
+
+@keyframes grumble {
+  from {
+    transform: translateX(-1.5px)
+  }
+
+  to {
+    transform: translateX(1.5px)
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0)
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1)
   }
 }
 
 @keyframes shake {
   from {
-    transform: translateX(-3px);
+    transform: translateX(-3px)
   }
 
   to {
-    transform: translateX(3px);
+    transform: translateX(3px)
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-  .max,
-  .loony,
-  .loony-tail {
-    animation: none;
-  }
-}
-
-/* ---------- endings ---------- */
-.ending-win .loony,
-.ending-win .max {
-  animation: hop .6s ease-in-out infinite alternate;
-}
-
-.ending-win .max {
-  animation-delay: .15s;
-}
-
-.ending-win .loony-tail {
-  animation: wag .2s ease-in-out infinite alternate;
 }
 
 @keyframes hop {
   from {
-    transform: translateY(0);
+    transform: translateY(0)
   }
 
   to {
-    transform: translateY(-1.2rem);
+    transform: translateY(-20px)
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-  .ending-win .max,
-  .ending-win .loony,
-  .ending-win .loony-tail {
-    animation: none;
-  }
-}
-
-/* ---------- ending: left ---------- */
-
-/* Max is sad and stands still */
-.ending-left .max {
-  animation: none;
-}
-
-.ending-left .max-smile {
-  top: 2.1rem;
-  transform: rotate(180deg);
-}
-
-.ending-left .max-head {
-  transform: translateY(.3rem) rotate(8deg);
-}
-
-/* Loony is sad, turns around, then walks off to the right */
-.ending-left .loony {
-  animation: leave 5s ease-in-out forwards;
-}
-
-.ending-left .loony-tail {
-  animation: none;
-  transform: rotate(150deg);
-}
-
-.ending-left .loony-head {
-  transform: translateY(.3rem);
-}
-
-.ending-left .loony-head::before {
-  opacity: 1;
-  transform: rotate(-25deg);
-}
-
-.ending-left .loony-ear {
-  transform: rotate(-40deg);
-  right: 1rem;
-}
-
-/* four legs swing like walking, starting after the turn */
-.ending-left .loony-leg {
-  transform-origin: top center;
-  animation: step .4s ease-in-out 1.4s infinite alternate;
-}
-
-.ending-left .loony-leg-back,
-.ending-left .loony-leg-front2 {
-  animation-direction: alternate-reverse;
 }
 
 @keyframes leave {
 
   0%,
   20% {
-    transform: translateX(0) scaleX(1);
+    transform: translateX(0) scaleX(1)
   }
 
   30% {
-    transform: translateX(0) scaleX(-1);
+    transform: translateX(0) scaleX(-1)
   }
 
   100% {
-    transform: translateX(22rem) scaleX(-1);
+    transform: translateX(340px) scaleX(-1)
   }
 }
 
 @keyframes step {
   from {
-    transform: rotate(-20deg);
+    transform: rotate(-20deg)
   }
 
   to {
-    transform: rotate(20deg);
+    transform: rotate(20deg)
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ending-left .loony {
-    animation: none;
-    transform: translateX(22rem) scaleX(-1);
-  }
-
-  .ending-left .loony-leg {
-    animation: none;
-  }
-}
-
-/* ---------- ending: eaten (cartoon, no gore) ---------- */
-.ending-eaten {
-  justify-content: center;
-  gap: 6rem;
-}
-
-/* Loony is furious: red fur, angry brows, stiff tail */
-.ending-eaten .loony {
-  --dog: #b3341d;
-  --dog-dark: #6e1d10;
-  animation: lunge 3.5s ease-in forwards;
-}
-
-.ending-eaten .loony-tail {
-  animation: none;
-  transform: rotate(-8deg);
-}
-
-.ending-eaten .loony-head::before {
-  opacity: 1;
-  transform: rotate(-25deg);
-  height: .22rem;
-}
-
-/* open mouth that appears during the lunge */
-.loony-head::after {
-  content: "";
-  position: absolute;
-  bottom: .15rem;
-  left: -.1rem;
-  width: 1.4rem;
-  height: .9rem;
-  background: #4a0d0d;
-  border-radius: 0 0 1rem 1rem;
-  opacity: 0;
-}
-
-.ending-eaten .loony-head::after {
-  animation: chomp 3.5s forwards;
-}
-
-/* belly puffs up after the gulp */
-.ending-eaten .loony-body {
-  animation: belly 3.5s forwards;
-}
-
-/* Max is scared, then swallowed */
-.ending-eaten .max {
-  transform-origin: 100% 60%;
-  animation: swallowed 3.5s forwards;
-}
-
-.ending-eaten .max-smile {
-  top: 2.1rem;
-  transform: rotate(180deg);
 }
 
 @keyframes lunge {
   0% {
-    transform: translateX(0);
+    transform: translateX(0)
   }
 
   8% {
-    transform: translateX(4px);
+    transform: translateX(4px)
   }
 
   16% {
-    transform: translateX(-4px);
+    transform: translateX(-4px)
   }
 
   24% {
-    transform: translateX(4px);
+    transform: translateX(4px)
   }
 
   32% {
-    transform: translateX(0);
+    transform: translateX(0)
   }
 
   38% {
-    transform: translateX(1rem);
+    transform: translateX(16px)
   }
 
   55% {
-    transform: translateX(-6.5rem) scale(1.1);
+    transform: translateX(-320px) scale(1.1)
   }
 
   100% {
-    transform: translateX(-6.5rem) scale(1);
+    transform: translateX(-320px) scale(1)
   }
 }
 
@@ -653,17 +523,17 @@ button:disabled {
 
   0%,
   40% {
-    opacity: 0;
+    opacity: 0
   }
 
   50%,
   62% {
-    opacity: 1;
+    opacity: 1
   }
 
   70%,
   100% {
-    opacity: 0;
+    opacity: 0
   }
 }
 
@@ -672,18 +542,18 @@ button:disabled {
   0%,
   52% {
     transform: scale(1);
-    opacity: 1;
+    opacity: 1
   }
 
   62% {
-    transform: scale(.7) translateX(1.5rem);
-    opacity: 1;
+    transform: scale(.7) translateX(24px);
+    opacity: 1
   }
 
   72%,
   100% {
-    transform: scale(0) translateX(3rem);
-    opacity: 0;
+    transform: scale(0) translateX(48px);
+    opacity: 0
   }
 }
 
@@ -691,14 +561,27 @@ button:disabled {
 
   0%,
   62% {
-    transform: scale(1);
+    opacity: 0;
+    transform: scaleY(1)
   }
 
   72% {
-    transform: scale(1.25);
+    opacity: 1;
+    transform: scaleY(1.6)
   }
 
   100% {
-    transform: scale(1.1);
+    opacity: 1;
+    transform: scaleY(1.4)
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  #max,
+  #tail,
+  #dog,
+  .leg {
+    animation: none !important
   }
 }
