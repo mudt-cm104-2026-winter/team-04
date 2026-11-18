@@ -57,6 +57,7 @@ def help_used():
 
 
 def _load_question():
+    #THIS FUNCTION IS LOADING AND SHUFFLING THE QUESTIONS
     global _options, _correct, _removed_option
     q = _order[_position]
     right_text = q["options"][q["answer"]]
