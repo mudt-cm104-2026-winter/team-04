@@ -272,13 +272,13 @@ button:disabled {
 .loony-ear {
   position: absolute;
   top: .2rem;
-  right: .5rem;
+  right: 0.5rem;
   width: 1rem;
   height: 1.8rem;
   background: var(--dog-dark);
   border-radius: 50%;
   transform-origin: top center;
-  transform: rotate(10deg);
+  transform: rotate(-10deg);
 }
 
 .loony-tail {
@@ -308,6 +308,16 @@ button:disabled {
 
 .loony-leg-back {
   left: 7.4rem;
+}
+
+.loony-leg-front2 {
+  left: 3.5rem;
+  filter: brightness(.85);
+}
+
+.loony-leg-back2 {
+  left: 6.3rem;
+  filter: brightness(.85);
 }
 
 /* ---------- Loony's mood ---------- */
@@ -424,5 +434,271 @@ button:disabled {
   .loony,
   .loony-tail {
     animation: none;
+  }
+}
+
+/* ---------- endings ---------- */
+.ending-win .loony,
+.ending-win .max {
+  animation: hop .6s ease-in-out infinite alternate;
+}
+
+.ending-win .max {
+  animation-delay: .15s;
+}
+
+.ending-win .loony-tail {
+  animation: wag .2s ease-in-out infinite alternate;
+}
+
+@keyframes hop {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-1.2rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ending-win .max,
+  .ending-win .loony,
+  .ending-win .loony-tail {
+    animation: none;
+  }
+}
+
+/* ---------- ending: left ---------- */
+
+/* Max is sad and stands still */
+.ending-left .max {
+  animation: none;
+}
+
+.ending-left .max-smile {
+  top: 2.1rem;
+  transform: rotate(180deg);
+}
+
+.ending-left .max-head {
+  transform: translateY(.3rem) rotate(8deg);
+}
+
+/* Loony is sad, turns around, then walks off to the right */
+.ending-left .loony {
+  animation: leave 5s ease-in-out forwards;
+}
+
+.ending-left .loony-tail {
+  animation: none;
+  transform: rotate(150deg);
+}
+
+.ending-left .loony-head {
+  transform: translateY(.3rem);
+}
+
+.ending-left .loony-head::before {
+  opacity: 1;
+  transform: rotate(-25deg);
+}
+
+.ending-left .loony-ear {
+  transform: rotate(-40deg);
+  right: 1rem;
+}
+
+/* four legs swing like walking, starting after the turn */
+.ending-left .loony-leg {
+  transform-origin: top center;
+  animation: step .4s ease-in-out 1.4s infinite alternate;
+}
+
+.ending-left .loony-leg-back,
+.ending-left .loony-leg-front2 {
+  animation-direction: alternate-reverse;
+}
+
+@keyframes leave {
+
+  0%,
+  20% {
+    transform: translateX(0) scaleX(1);
+  }
+
+  30% {
+    transform: translateX(0) scaleX(-1);
+  }
+
+  100% {
+    transform: translateX(22rem) scaleX(-1);
+  }
+}
+
+@keyframes step {
+  from {
+    transform: rotate(-20deg);
+  }
+
+  to {
+    transform: rotate(20deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ending-left .loony {
+    animation: none;
+    transform: translateX(22rem) scaleX(-1);
+  }
+
+  .ending-left .loony-leg {
+    animation: none;
+  }
+}
+
+/* ---------- ending: eaten (cartoon, no gore) ---------- */
+.ending-eaten {
+  justify-content: center;
+  gap: 6rem;
+}
+
+/* Loony is furious: red fur, angry brows, stiff tail */
+.ending-eaten .loony {
+  --dog: #b3341d;
+  --dog-dark: #6e1d10;
+  animation: lunge 3.5s ease-in forwards;
+}
+
+.ending-eaten .loony-tail {
+  animation: none;
+  transform: rotate(-8deg);
+}
+
+.ending-eaten .loony-head::before {
+  opacity: 1;
+  transform: rotate(-25deg);
+  height: .22rem;
+}
+
+/* open mouth that appears during the lunge */
+.loony-head::after {
+  content: "";
+  position: absolute;
+  bottom: .15rem;
+  left: -.1rem;
+  width: 1.4rem;
+  height: .9rem;
+  background: #4a0d0d;
+  border-radius: 0 0 1rem 1rem;
+  opacity: 0;
+}
+
+.ending-eaten .loony-head::after {
+  animation: chomp 3.5s forwards;
+}
+
+/* belly puffs up after the gulp */
+.ending-eaten .loony-body {
+  animation: belly 3.5s forwards;
+}
+
+/* Max is scared, then swallowed */
+.ending-eaten .max {
+  transform-origin: 100% 60%;
+  animation: swallowed 3.5s forwards;
+}
+
+.ending-eaten .max-smile {
+  top: 2.1rem;
+  transform: rotate(180deg);
+}
+
+@keyframes lunge {
+  0% {
+    transform: translateX(0);
+  }
+
+  8% {
+    transform: translateX(4px);
+  }
+
+  16% {
+    transform: translateX(-4px);
+  }
+
+  24% {
+    transform: translateX(4px);
+  }
+
+  32% {
+    transform: translateX(0);
+  }
+
+  38% {
+    transform: translateX(1rem);
+  }
+
+  55% {
+    transform: translateX(-6.5rem) scale(1.1);
+  }
+
+  100% {
+    transform: translateX(-6.5rem) scale(1);
+  }
+}
+
+@keyframes chomp {
+
+  0%,
+  40% {
+    opacity: 0;
+  }
+
+  50%,
+  62% {
+    opacity: 1;
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes swallowed {
+
+  0%,
+  52% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  62% {
+    transform: scale(.7) translateX(1.5rem);
+    opacity: 1;
+  }
+
+  72%,
+  100% {
+    transform: scale(0) translateX(3rem);
+    opacity: 0;
+  }
+}
+
+@keyframes belly {
+
+  0%,
+  62% {
+    transform: scale(1);
+  }
+
+  72% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1.1);
   }
 }
