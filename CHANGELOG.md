@@ -20,4 +20,5 @@ Example:
 
 ## Unreleased
 
+- The README now has all six sections: what this is, how to run it, the team, how we work, sources and use of AI (#57)
 - Start from the repository template
