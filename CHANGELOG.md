@@ -12,6 +12,7 @@
 - The game scene is now a drawn office with an SVG Max and Loony instead of CSS boxes, with the same mood and ending animations (#45)
 - Mood now resets to happy on a win and goes to furious on a loss; during the game it never drops after a right answer (#48)
 - Restyle the page: bigger title, square full-width buttons matching the question box, new button colours (#52)
+- Fix formatting of the changelog line from #45 (#56)
 <!-- Every pull request adds one line at the top of "Unreleased":
 - what changed, in one sentence (#<pull request number>)
 Example:
