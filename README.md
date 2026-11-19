@@ -52,8 +52,8 @@ The game state is kept in memory: after a restart of the server, a new game star
 
 ## Use of AI
 
-
-- 2026-11-13: Claude , used by Daitaii-dev for some guidance on Git, GitHub and Python, and to draft the Max, Loony and office scene (SVG and CSS). Checked by running the game locally, and review by a teammate in the pull request.
-- 2026-11-17: Claude , used by Matyyy3 for some guidance on Git, GitHub and Python,
+- 2026-11-13: Claude (Claude Code desktop app), used by Daitaii-dev for some guidance on Git, GitHub and Python, and to draft the Max, Loony and office scene (SVG and CSS). Checked by running the game locally, and review by a teammate in the pull request.
+- 2026-11-17: Claude (Claude Code), used by Matyyy3 for some guidance on Git, GitHub and Python. Checked by running the game locally and by review by a teammate in the pull request.
+- 2026-11-18: Claude, used by Matyyy3 to restyle the buttons in `style.css` (pull request #52). Checked by running the game and by review in the pull request.
 - 2026-11-18: AI help for the improved visuals and stage (pull request #45), used by geko-crypto. Checked by running the game and by review in the pull request.
-- 2026-11-18: Claude (Claude Code desktop app), used by Daitaii-dev for help with repo clean up and readme draft
+- 2026-11-18: Claude (Claude Code desktop app), used by Daitaii-dev for help with the repo clean-up and the README draft. Checked by reading every change and by review by a teammate in the pull request.
